@@ -16,6 +16,7 @@
   sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
   imports = [
+    ./programs/firefox.nix
     ./programs/git.nix
     ./programs/kitty.nix
     ./programs/zsh.nix

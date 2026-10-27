@@ -37,7 +37,6 @@
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
-    firefox
     git
     curl
     vim
