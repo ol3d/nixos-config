@@ -8,6 +8,7 @@ let
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.home-manager
     {
+      home-manager.useUserPackages = true;
       home-manager.users.ol3d = import ../home;
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops

@@ -5,6 +5,10 @@
   home.homeDirectory = "/home/ol3d";
   home.stateVersion = "26.05";
 
+  home.packages = with pkgs; [
+    nerd-fonts.commit-mono
+  ];
+
   systemd.user.tmpfiles.rules = [
     "d %h/workspace 0755 - -"
   ];
