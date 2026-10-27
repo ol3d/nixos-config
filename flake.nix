@@ -23,41 +23,9 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      disko,
-      sops-nix,
-      nixos-hardware,
-    }:
+    inputs:
     let
-      system = "x86_64-linux";
-
-      sharedModules = [
-        disko.nixosModules.disko
-        sops-nix.nixosModules.sops
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.users.ol3d = import ./home;
-          home-manager.sharedModules = [
-            sops-nix.homeManagerModules.sops
-          ];
-        }
-        ./modules/core
-        ./modules/desktop
-        ./modules/dev
-      ];
-
-      mkHost =
-        path:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = sharedModules ++ [ path ];
-        };
+      inherit (import ./lib { inherit inputs; }) mkHost;
     in
     {
       nixosConfigurations = {

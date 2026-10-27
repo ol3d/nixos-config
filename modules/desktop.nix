@@ -3,6 +3,8 @@
 {
   services.xserver.enable = true;
 
+  services.xserver.excludePackages = [ pkgs.xterm ];
+
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
