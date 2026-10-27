@@ -15,7 +15,6 @@ let
     }
     ../modules/core.nix
     ../modules/desktop.nix
-    ../modules/dev.nix
   ];
 
   mkHost =

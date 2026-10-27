@@ -30,9 +30,17 @@
 
   services.printing.enable = true;
 
+  hardware.bluetooth.enable = true;
+
   programs.steam.enable = true;
 
   programs.gamemode.enable = true;
 
-  environment.systemPackages = with pkgs; [ firefox ];
+  environment.systemPackages = with pkgs; [
+    firefox
+    git
+    curl
+    vim
+    wget
+  ];
 }
