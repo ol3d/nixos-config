@@ -20,6 +20,8 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+    thyx.url = "github:rccyx/thyx";
   };
 
   outputs =

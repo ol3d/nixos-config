@@ -6,6 +6,7 @@ let
   sharedModules = [
     inputs.disko.nixosModules.disko
     inputs.sops-nix.nixosModules.sops
+    inputs.thyx.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager.useUserPackages = true;
@@ -16,6 +17,7 @@ let
     }
     ../modules/core.nix
     ../modules/desktop.nix
+    ../modules/thyx
   ];
 
   mkHost =
