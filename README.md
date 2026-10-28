@@ -65,7 +65,7 @@ The steps below install `laptop-01` from a blank drive, in order.
     - `mkdir -p ~/.config/sops/age`
     - `vim ~/.config/sops/age/keys.txt` and paste the key
     - `chmod 600 ~/.config/sops/age/keys.txt`
-    - Log out and back in, then verify with `git config --get user.email`
+    - Reboot and log back in, then verify with `git config --get user.email`
 
 After the first login, verify the machine: the Windows drive still boots
 from the firmware boot menu (F12), WiFi survives suspend/resume, Steam
