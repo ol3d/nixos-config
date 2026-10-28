@@ -21,6 +21,9 @@ Rebuilds apply without rebooting; only a kernel change waits for the next
 natural reboot. To update the pinned package inputs, run
 `nix flake update`, review the diff, commit, and push.
 
+Common workflows are wrapped in Taskfiles, split by area under
+`.taskfiles/`; run `task --list` from a clone for the full set.
+
 ## Install
 
 The steps below install `laptop-01` from a blank drive, in order.
@@ -66,6 +69,8 @@ The steps below install `laptop-01` from a blank drive, in order.
     - `vim ~/.config/sops/age/keys.txt` and paste the key
     - `chmod 600 ~/.config/sops/age/keys.txt`
     - Reboot and log back in, then verify with `git config --get user.email`
+13. Clone this repository to seed the local workspace:
+    `git clone https://github.com/ol3d/nixos-config ~/workspace/nixos-config`
 
 After the first login, verify the machine: the Windows drive still boots
 from the firmware boot menu (F12), WiFi survives suspend/resume, Steam

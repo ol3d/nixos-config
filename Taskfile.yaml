@@ -1,0 +1,10 @@
+---
+version: "3"
+
+includes:
+  nix: .taskfiles/nix
+
+tasks:
+  default:
+    cmd: task --list
+    silent: true

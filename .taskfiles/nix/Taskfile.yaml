@@ -1,0 +1,19 @@
+---
+version: "3"
+
+tasks:
+  rebuild:
+    desc: "Rebuild and switch the current machine"
+    cmds:
+      - sudo nixos-rebuild switch --flake .#$(hostname)
+
+  update:
+    desc: "Update all pinned flake inputs"
+    cmds:
+      - nix flake update
+      - echo "review the flake.lock diff, then commit and push"
+
+  check:
+    desc: "Evaluate the flake as a pre-push smoke test"
+    cmds:
+      - nix flake check

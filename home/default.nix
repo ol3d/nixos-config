@@ -7,6 +7,8 @@
 
   home.packages = with pkgs; [
     nerd-fonts.commit-mono
+    go-task
+    sops
   ];
 
   systemd.user.tmpfiles.rules = [
