@@ -6,9 +6,19 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    # Wraps task so it always runs this repository's Taskfile, from any directory
+    # Runs the nearest Taskfile up the tree, falling back to this repository
     initContent = ''
-      task() { command task -d "$HOME/workspace/nixos-config" "$@"; }
+      task() {
+        local d=$PWD
+        while [ "$d" != "/" ]; do
+          if [ -f "$d/Taskfile.yaml" ] || [ -f "$d/Taskfile.yml" ]; then
+            command task "$@"
+            return
+          fi
+          d=$(dirname "$d")
+        done
+        command task -d "$HOME/workspace/nixos-config" "$@"
+      }
     '';
     history = {
       ignoreDups = true;
