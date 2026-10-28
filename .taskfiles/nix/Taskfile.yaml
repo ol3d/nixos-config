@@ -1,19 +1,22 @@
 ---
 version: "3"
 
+vars:
+  FLAKE_DIR: "{{.TASKFILE_DIR}}/../.."
+
 tasks:
   rebuild:
     desc: "Rebuild and switch the current machine"
     cmds:
-      - sudo nixos-rebuild switch --flake .#$(hostname)
+      - sudo nixos-rebuild switch --flake "{{.FLAKE_DIR}}#$(hostname)"
 
   update:
     desc: "Update all pinned flake inputs"
     cmds:
-      - nix flake update
+      - nix flake update "{{.FLAKE_DIR}}"
       - echo "review the flake.lock diff, then commit and push"
 
   check:
     desc: "Evaluate the flake as a pre-push smoke test"
     cmds:
-      - nix flake check
+      - nix flake check "{{.FLAKE_DIR}}"
