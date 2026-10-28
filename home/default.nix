@@ -21,6 +21,7 @@
     ./programs/firefox.nix
     ./programs/git.nix
     ./programs/kitty.nix
+    ./programs/neovim.nix
     ./programs/zsh.nix
   ];
 }

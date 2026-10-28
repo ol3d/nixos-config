@@ -10,12 +10,14 @@ boot menu.
 ## Usage
 
 ```sh
-sudo nixos-rebuild switch --flake github:ol3d/nixos-config#laptop-01
+git -C ~/workspace/nixos-config pull
+task nix:rebuild
 ```
 
-This rebuilds the machine as described on `main` and applies it live,
-keeping the previous system as a rollback point. `system.autoUpgrade` runs
-the same rebuild automatically once a day, so merging to `main` is
+This rebuilds the machine as described on the local clone and applies it
+live, keeping the previous system as a rollback point. Building from a
+local clone avoids GitHub's flake cache, which can serve a stale commit
+for up to an hour after a push. `system.autoUpgrade` runs the same rebuild automatically once a day, so merging to `main` is
 deployment; there is no separate step to push changes out to the machine.
 Rebuilds apply without rebooting; only a kernel change waits for the next
 natural reboot. To update the pinned package inputs, run
@@ -66,7 +68,7 @@ The steps below install `laptop-01` from a blank drive, in order.
     identity:
     - Retrieve the key from your password manager
     - `mkdir -p ~/.config/sops/age`
-    - `vim ~/.config/sops/age/keys.txt` and paste the key
+    - `nvim ~/.config/sops/age/keys.txt` and paste the key
     - `chmod 600 ~/.config/sops/age/keys.txt`
     - Reboot and log back in, then verify with `git config --get user.email`
 13. Clone this repository to seed the local workspace:
