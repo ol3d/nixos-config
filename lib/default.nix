@@ -10,6 +10,7 @@ let
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager.useUserPackages = true;
+      home-manager.backupFileExtension = "backup";
       home-manager.users.ol3d = import ../home;
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
