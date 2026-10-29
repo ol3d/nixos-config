@@ -6,20 +6,15 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    # Runs the nearest Taskfile up the tree, falling back to this repository
-    initContent = ''
-      task() {
-        local d=$PWD
-        while [ "$d" != "/" ]; do
-          if [ -f "$d/Taskfile.yaml" ] || [ -f "$d/Taskfile.yml" ]; then
-            command task "$@"
-            return
-          fi
-          d=$(dirname "$d")
-        done
-        command task -d "$HOME/workspace/nixos-config" "$@"
-      }
-    '';
+    initContent = lib.mkMerge [
+      (lib.mkOrder 550 ''
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/config/p10k-classic.zsh
+      '')
+      (lib.mkOrder 1000 ''
+        task() { command task -d "$HOME/workspace/nixos-config" "$@"; }
+      '')
+    ];
     history = {
       ignoreDups = true;
       ignoreSpace = true;

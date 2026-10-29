@@ -11,7 +11,7 @@ boot menu.
 
 ```sh
 git -C ~/workspace/nixos-config pull
-task nix:rebuild
+task nix:rebuild-local
 ```
 
 This rebuilds the machine as described on the local clone and applies it

@@ -5,10 +5,15 @@ vars:
   FLAKE_DIR: "{{.TASKFILE_DIR}}/../.."
 
 tasks:
-  rebuild:
-    desc: "Rebuild and switch the current machine"
+  rebuild-local:
+    desc: "Rebuild the current machine from the local clone"
     cmds:
       - sudo nixos-rebuild switch --flake "{{.FLAKE_DIR}}#$(hostname)"
+
+  rebuild-remote:
+    desc: "Rebuild the current machine from the GitHub repository"
+    cmds:
+      - sudo nixos-rebuild switch --flake "github:ol3d/nixos-config#$(hostname)"
 
   update:
     desc: "Update all pinned flake inputs"
