@@ -7,6 +7,7 @@
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     settings."github.com" = {
       User = "git";
       IdentityFile = "${config.home.homeDirectory}/.ssh/github_id_ed25519";
