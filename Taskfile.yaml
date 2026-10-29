@@ -2,9 +2,23 @@
 version: "3"
 
 includes:
+  github: .taskfiles/github
   nix: .taskfiles/nix
 
 tasks:
   default:
     cmd: task --list
     silent: true
+
+  bootstrap:
+    desc: "Generate this machine's GitHub SSH key if missing and show it for upload"
+    cmds:
+      - |
+        [ -f "$HOME/.ssh/github_id_ed25519" ] || {
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          ssh-keygen -t ed25519 -C "github_$(hostname)" -f "$HOME/.ssh/github_id_ed25519" -N ""
+        }
+        echo "add this public key at https://github.com/settings/ssh/new:"
+        cat "$HOME/.ssh/github_id_ed25519.pub"
+        ssh -T git@github.com 2>&1 || true

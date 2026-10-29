@@ -12,7 +12,7 @@
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/config/p10k-classic.zsh
       '')
       (lib.mkOrder 1000 ''
-        task() { command task -d "$HOME/workspace/nixos-config" "$@"; }
+        task() { command task -d "$HOME/workspace/ol3d/nixos-config" "$@"; }
       '')
     ];
     history = {

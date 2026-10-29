@@ -10,7 +10,7 @@ boot menu.
 ## Usage
 
 ```sh
-git -C ~/workspace/nixos-config pull
+git -C ~/workspace/ol3d/nixos-config pull
 task nix:rebuild-local
 ```
 
@@ -72,7 +72,12 @@ The steps below install `laptop-01` from a blank drive, in order.
     - `chmod 600 ~/.config/sops/age/keys.txt`
     - Reboot and log back in, then verify with `git config --get user.email`
 13. Clone this repository to seed the local workspace:
-    `git clone https://github.com/ol3d/nixos-config ~/workspace/nixos-config`
+    `git clone https://github.com/ol3d/nixos-config ~/workspace/ol3d/nixos-config`
+14. Set up this machine's GitHub identity and clone the rest:
+    - `cd ~/workspace/ol3d/nixos-config && task bootstrap`
+    - Add the printed public key at https://github.com/settings/ssh/new,
+      titled `github_<hostname>`
+    - `task github:clone`
 
 After the first login, verify the machine: the Windows drive still boots
 from the firmware boot menu (F12), WiFi survives suspend/resume, Steam

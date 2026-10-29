@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     nerd-fonts.commit-mono
     go-task
+    openssh
     sops
   ];
 
@@ -22,6 +23,7 @@
     ./programs/git.nix
     ./programs/kitty.nix
     ./programs/neovim.nix
+    ./programs/ssh.nix
     ./programs/zsh.nix
   ];
 }

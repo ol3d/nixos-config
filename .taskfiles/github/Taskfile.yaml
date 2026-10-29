@@ -1,0 +1,23 @@
+---
+version: "3"
+
+vars:
+  WORKSPACE_DIR: "{{.HOME}}/workspace"
+  REPOS:
+    - git@github.com:ol3d/nixos-config.git
+    - git@github.com:ol3d/home-ops.git
+
+tasks:
+  clone:
+    desc: "Clone any missing repositories into the workspace"
+    cmds:
+      - |
+        cd "{{.WORKSPACE_DIR}}"
+        failed=""
+        for url in {{range .REPOS}}{{.}} {{end}}; do
+          repo=${url#*:}
+          repo=${repo%.git}
+          [ -d "$repo" ] && continue
+          git clone "$url" "$repo" || failed="$failed $repo"
+        done
+        [ -z "$failed" ] || { echo "failed to clone:$failed"; exit 1; }
