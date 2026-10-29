@@ -7,12 +7,11 @@
 
   programs.ssh = {
     enable = true;
-    matchBlocks."github.com" = {
-      hostname = "github.com";
-      user = "git";
-      identityFile = "${config.home.homeDirectory}/.ssh/github_id_ed25519";
-      identitiesOnly = true;
-      userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.github ${config.home.homeDirectory}/.ssh/known_hosts";
+    settings."github.com" = {
+      User = "git";
+      IdentityFile = "${config.home.homeDirectory}/.ssh/github_id_ed25519";
+      IdentitiesOnly = "yes";
+      UserKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts.github ${config.home.homeDirectory}/.ssh/known_hosts";
     };
   };
 }
