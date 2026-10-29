@@ -37,10 +37,13 @@
     themePackages = [ pkgs.nixos-bgrt-plymouth ];
   };
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = false;
+  };
   networking.firewall.enable = true;
 
-  time.timeZone = "America/Chicago";
+  time.timeZone = lib.mkDefault "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
   users.users.ol3d = {
@@ -57,6 +60,7 @@
 
   hardware.enableRedistributableFirmware = true;
 
+  services.fstrim.enable = true;
   services.fwupd.enable = true;
 
   system.stateVersion = "26.05";

@@ -15,6 +15,7 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = [ pkgs.intel-media-driver ];
   };
 
   security.rtkit.enable = true;
@@ -46,8 +47,9 @@
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
-    git
     curl
+    git
+    libva-utils
     wget
   ];
 }
