@@ -30,7 +30,16 @@
 
   services.printing.enable = true;
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media";
+      };
+    };
+  };
+
+  # programs.kdeconnect.enable = true;
 
   programs.steam.enable = true;
 
