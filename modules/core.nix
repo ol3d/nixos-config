@@ -31,6 +31,12 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.plymouth = {
+    enable = true;
+    theme = "nixos-bgrt";
+    themePackages = [ pkgs.nixos-bgrt-plymouth ];
+  };
+
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
 
