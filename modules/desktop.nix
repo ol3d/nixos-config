@@ -49,6 +49,7 @@
   environment.systemPackages = with pkgs; [
     curl
     git
+    iw
     libva-utils
     wget
   ];
