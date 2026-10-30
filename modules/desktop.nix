@@ -15,7 +15,10 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = [ pkgs.intel-media-driver ];
+    extraPackages = [
+      pkgs.intel-media-driver
+      pkgs.vpl-gpu-rt
+    ];
   };
 
   security.rtkit.enable = true;
